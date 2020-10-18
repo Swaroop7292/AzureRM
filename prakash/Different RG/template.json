@@ -1,0 +1,68 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+
+        "ResourceGroup2": {
+           "type": "string",
+           "metadata": {
+                "description": "Resource Group 2 name"
+            }
+        }
+    },
+    "variables": {
+        "Storage1": "sawert1234q",
+        "Storage2": "sawert1234w"
+    },
+    "resources": [
+        {
+            "name": "[variables('Storage1')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "location": "[resourceGroup().location]",
+            "sku":{
+                "name": "Standard_LRS"
+              },
+              "kind": "Storage",
+            "tags": {
+                "displayName": "storageaccount1"
+            },
+            "properties": {
+                "accountType": "Standard_LRS"
+            }
+        },
+        {
+            "name": "nestedDeployment1",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
+            "resourceGroup": "[parameters('ResourceGroup2')]",
+            "properties": {
+                "mode": "Incremental",
+                "template": 
+                    {
+                        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                        "contentVersion": "1.0.0.0",
+                        "parameters": {},
+                        "variables": {},
+                        "resources": [
+                            {
+                                "name": "[variables('Storage2')]",
+                                "type": "Microsoft.Storage/storageAccounts",
+                                "apiVersion": "2015-06-15",
+                                "location": "[resourceGroup().location]",
+                                "tags": {
+                                    "displayName": "[variables('Storage2')]"
+                                },
+                                "properties": {
+                                    "accountType": "Standard_LRS"
+                                }
+                            }
+                        ]
+
+                    }
+            }       
+        } 
+        
+    ]
+
+}

@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "value": "prakash"
+        },
+        "adminPassword": {
+            "reference": {
+                "keyVault": {
+                "id": "/subscriptions/e4f480b4-2981-4434-9f83-28ace765167c/resourceGroups/my-rg/providers/Microsoft.KeyVault/vaults/ARM-Keyvault43"
+                },
+                "secretName": "vmAdminPassword"
+            }
+        }
+    }
+}
