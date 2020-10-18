@@ -1,0 +1,46 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "VM1adminUsername": {
+            "value": "azureuser"
+        },
+        "Vnet1": {
+            "value": "Vnet1"
+        },
+        "VM2adminUsername": {
+            "value": "azureuser"
+        },
+        "adminPassword": {
+            "value": "1qazhspxsw2@"
+            },
+        "VM1NSG": {
+            "value": "Vm1NSG"
+        },
+        "VM2NSG": {
+            "value": "vm2nsg"
+        },
+        "LoadBalancer PIP": {
+            "value": "LBPIP"
+        },
+        "LoadBalancer": {
+            "value": "MYLB"
+        },
+        "availabilitySet": {
+            "value": "AVSET"
+        },
+        "windowsVM1": {
+            "value": "windowsVM1"
+        },
+        "windowsVM2": {
+            "value": "windowsVM2"
+        },
+        "NIC1": {
+            "value": "nic1"
+        },
+        "NIC2": {
+            "value": "nic2"
+        }
+    }
+   
+}
